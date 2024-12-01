@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netagrow User Journey Flows</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'netagrow-primary': '#4CAF50',
+                        'netagrow-secondary': '#2196F3',
+                        'netagrow-accent': '#FFC107',
+                        'netagrow-background': '#F4F4F4',
+                        'netagrow-hover': '#388E3C'
+                    }
+                }
+            }
+        }
+
+        // Initialize Mermaid
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                theme: 'neutral',
+                themeVariables: {
+                    'primaryColor': '#4CAF50',
+                    'primaryTextColor': '#FFFFFF',
+                    'secondaryColor': '#2196F3',
+                    'tertiaryColor': '#FFC107'
+                }
+            });
+            mermaid.init();
+        });
+    </script>
+    <style>
+        .journey-card {
+            @apply bg-white shadow-lg rounded-xl p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer;
+        }
+        .journey-card:hover {
+            background-color: #E8F5E9; /* Subtle hover effect */
+        }
+        .journey-icon {
+            @apply w-12 h-12 rounded-full flex items-center justify-center text-white font-bold;
+        }
+        /* Add smoother transition for the opening/closing of the journey details */
+        details[open] summary {
+            @apply text-netagrow-secondary font-bold;
+        }
+        details summary {
+            @apply bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-300 ease-in-out;
+        }
+        details div {
+            @apply mt-4;
+        }
+    </style>
+</head>
+<body class="bg-netagrow-background text-gray-800">
+
+<div class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-netagrow-primary mb-4">Netagrow User Journey Flows</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Comprehensive visualization of user interactions and system flows in the agricultural technology app
+        </p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Onboarding & Farm Setup -->
+        <details class="journey-card">
+            <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                <div class="text-xl font-bold">1. Onboarding & Farm Setup</div>
+                <span class="text-lg">+</span>
+            </summary>
+            <div class="mermaid">
+                %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                graph TD
+                A[Start: Welcome Screen] --> B{User Authentication}
+                B --> |New User| C[User Registration]
+                B --> |Returning User| D[Direct Login]
+                C --> E[Farm Details Input]
+                E --> F[Crop Selection]
+                F --> G[Tutorial Screen]
+                G --> H[Personalized Dashboard]
+            </div>
+        </details>
+
+        <!-- Dashboard Overview -->
+        <details class="journey-card">
+            <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                <div class="text-xl font-bold">2. Dashboard Overview</div>
+                <span class="text-lg">+</span>
+            </summary>
+            <div class="mermaid">
+                %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                graph TD
+                I[Open App] --> J[Farm Overview: Weather, Crop Health, Tasks]
+                J --> K[Interactive Widgets: Moisture, Energy, Irrigation, Crop Status]
+                K --> L[AI Recommendations & Alerts]
+                L --> M{User Interaction}
+                M --> |View Tasks| N[Task List]
+                M --> |View Alerts| O[Alerts Panel]
+                M --> |View Recommendations| P[AI Insights]
+            </div>
+        </details>
+
+        <!-- My Fields - Crop Management -->
+        <details class="journey-card">
+            <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                <div class="text-xl font-bold">3. My Fields - Crop Management</div>
+                <span class="text-lg">+</span>
+            </summary>
+            <div class="mermaid">
+                %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                graph TD
+                Q[Select My Fields] --> R[Display Crop List]
+                R --> S[Track Crop Progress: Health, Growth, Pest Control]
+                S --> T{Crop Action}
+                T --> |Detailed Insights| U[Crop Timeline]
+                T --> |Health Check| V[Upload Crop Images]
+                V --> W[AI Pest Detection]
+                T --> |Add Crop| X[New Crop Registration]
+            </div>
+        </details>
+
+        <!-- AgreeVision - AI-Powered Insights -->
+        <details class="journey-card">
+            <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                <div class="text-xl font-bold">4. AgreeVision - AI-Powered Insights</div>
+                <span class="text-lg">+</span>
+            </summary>
+            <div class="mermaid">
+                %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                graph TD
+                Q[Select My Fields] --> R[Display Crop List]
+                R --> S[Track Crop Progress]
+                S --> T{Crop Action}
+                T --> |Recommendations| U[AI Advice: Irrigation, Fertilization, Pest Control]
+                T --> |Growth Monitoring| V[Track Crop Health & Conditions]
+                T --> |Insights| W[Personalized Feedback & Tips]
+                T --> |Revenue| X[Premium Features & Insights for Partners]
+            </div>
+        </details>
+
+        <!-- Additional Journey Sections with Expandable Cards -->
+        <div class="mt-8 space-y-6">
+            <details class="journey-card">
+                <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                    <div class="text-xl font-bold">5. IoT Device Integration</div>
+                    <span class="text-lg">+</span>
+                </summary>
+                <div class="mermaid mt-4">
+                    %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                    graph TD
+                    AD[Sync IoT Device] --> AE[Monitor Soil Moisture, Temp, pH, Humidity, Light]
+                    AE --> AF[Track Device Battery & Power Consumption]
+                    AF --> AG[Automate Processes: Irrigation, Ventilation]
+                    AG --> AH[Data Display on Device & App]
+                </div>
+            </details>
+
+            <details class="journey-card">
+                <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                    <div class="text-xl font-bold">6. Agro-Dealer & Smart Chatbot</div>
+                    <span class="text-lg">+</span>
+                </summary>
+                <div class="mermaid mt-4">
+                    %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                    graph TD
+                    AI[Open Agro-Dealer Directory] --> AJ[Location & Need Filters]
+                    AJ --> AK[Display Dealer Recommendations]
+                    AK --> AL{Dealer Interaction}
+                    AL --> |Contact| AM[Communication Channel]
+                    AL --> |Request Consultation| AN[Expert Matching]
+                    AO[Activate Smart Chatbot] --> AP[User Query Input]
+                    AP --> AQ[AI Response Generation]
+                    AQ --> AR{Response Type}
+                    AR --> |Direct Answer| AS[Immediate Solution]
+                    AR --> |Complex Query| AT[Expert Referral]
+                </div>
+            </details>
+
+            <details class="journey-card">
+                <summary class="flex items-center justify-between mb-6 cursor-pointer bg-netagrow-primary text-white p-4 rounded-lg hover:bg-netagrow-hover transition duration-200">
+                    <div class="text-xl font-bold">7. Revenue Monetization</div>
+                    <span class="text-lg">+</span>
+                </summary>
+                <div class="mermaid mt-4">
+                    %%{init: {'themeVariables': {'primaryColor': '#4CAF50'}}}%%
+                    graph TD
+                    AU[Enable Subscription Model] --> AV[Offer Premium Features]
+                    AV --> AW[Premium Plan Access]
+                    AW --> AX[Increased AI Insights & Device Control]
+                    AU --> AY[Revenue Sharing with Agro-Dealers]
+                    AY --> AZ[Track Revenue Generation]
+                    AZ --> BA[Display Earnings]
+                </div>
+            </details>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
